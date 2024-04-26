@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "154703067304",
+    "project_id": "ssij-d1d36",
+    "storage_bucket": "ssij-d1d36.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:154703067304:android:99998cfe9bf5053b4caa9d",
+        "android_client_info": {
+          "package_name": "com.shopping_cart"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPHiTxiu7EOwIUlHWZnK7-j4GaOZRpSfI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
