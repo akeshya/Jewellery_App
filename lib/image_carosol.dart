@@ -30,41 +30,44 @@ class _ImageCarouselState extends State<ImageCarousel> {
       children: [
         Stack(
           children: [
-            CarouselSlider(
-              items: widget.product.image.map((url) {
-                return Builder(
-                  builder: (BuildContext context) {
-                    return Container(
-                      width: width,
-                      height: height * 0.38,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                        image: CachedNetworkImageProvider(
-                          url,
-                          cacheKey: url,
-                          scale: MediaQuery.of(context).devicePixelRatio
-                        ),
-                        filterQuality: FilterQuality.high,
-                        fit: BoxFit
-                            .fill, // You can adjust the image fit as needed
-                      )),
-                    );
+            InkWell(
+              onTap: () => Get.toNamed('/product_image', arguments: {'title': widget.product.name, 'imageList': widget.product.image}),
+              child: CarouselSlider(
+                items: widget.product.image.map((url) {
+                  return Builder(
+                    builder: (BuildContext context) {
+                      return Container(
+                        width: width,
+                        height: height * 0.38,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                          image: CachedNetworkImageProvider(
+                            url,
+                            cacheKey: url,
+                            scale: MediaQuery.of(context).devicePixelRatio
+                          ),
+                          filterQuality: FilterQuality.high,
+                          fit: BoxFit
+                              .fill, // You can adjust the image fit as needed
+                        )),
+                      );
+                    },
+                  );
+                }).toList(),
+                options: CarouselOptions(
+                  height: MediaQuery.of(context).size.height * 0.38,
+                  autoPlay: true, // Enable autoplay
+                  autoPlayInterval:
+                      Duration(seconds: 3), // Set the autoplay interval
+                  viewportFraction: 1.0,
+                  autoPlayAnimationDuration:
+                      Duration(milliseconds: 1000), // Animation duration
+                  onPageChanged: (index, reason) {
+                    setState(() {
+                      _currentIndex = index;
+                    });
                   },
-                );
-              }).toList(),
-              options: CarouselOptions(
-                height: MediaQuery.of(context).size.height * 0.38,
-                autoPlay: true, // Enable autoplay
-                autoPlayInterval:
-                    Duration(seconds: 3), // Set the autoplay interval
-                viewportFraction: 1.0,
-                autoPlayAnimationDuration:
-                    Duration(milliseconds: 1000), // Animation duration
-                onPageChanged: (index, reason) {
-                  setState(() {
-                    _currentIndex = index;
-                  });
-                },
+                ),
               ),
             ),
             Positioned(

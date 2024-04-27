@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ import 'package:shopping_cart/components/firebase_options.dart';
 import 'package:shopping_cart/controllers/user_status_controller.dart';
 import 'package:shopping_cart/pages/CategoryPages/product_listing_page.dart';
 import 'package:shopping_cart/pages/OrderPages/my_orders_page.dart';
+import 'package:shopping_cart/pages/OrderPages/order_confirm_page.dart';
 import 'package:shopping_cart/pages/SignUpPages/login_page.dart';
 import 'package:shopping_cart/pages/SignUpPages/otp_page.dart';
 import 'package:shopping_cart/pages/SignUpPages/register_page.dart';
@@ -41,6 +43,9 @@ Future<void> main() async {
     statusBarColor:
         AppColors.primaryColor500, // Set the desired status bar color here.
   ));
+
+  await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
+      alert: true, badge: true, sound: true);
 
   runApp(MyApp());
 }
@@ -77,6 +82,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/register_success', page: () => RegisterSuccessPage()),
         GetPage(name: '/bottom_home', page: () => MyBottomNavigationPage()),
         GetPage(name: '/product_listing', page: () => ProductListingPage()),
+        GetPage(name: '/order_confirm', page: () => OrderConfirmationPage()),
         GetPage(name: '/orders', page: () => MyOrdersPage()),
       ],
     );

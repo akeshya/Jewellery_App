@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shopping_cart/components/common_components.dart';
+import 'package:shopping_cart/components/custom_toast.dart';
+import 'package:shopping_cart/controllers/PostControllers/add_to_cart_controller.dart';
+import 'package:shopping_cart/controllers/PostControllers/get_cart_item_controller.dart';
 import 'package:shopping_cart/controllers/product_details_controller.dart';
 import 'package:shopping_cart/model/product_list_modal.dart';
 import 'package:shopping_cart/utils/CustomColors.dart';
@@ -14,6 +17,7 @@ class ProductDetailsPage extends StatelessWidget {
   ProductDetailsPage({Key? key, required this.product}) : super(key: key);
 
   final productDetailsController = Get.put(ProductDetailsController());
+  final addToCartController = Get.find<AddToCartController>();
 
   @override
   Widget build(BuildContext context) {
@@ -167,11 +171,48 @@ class ProductDetailsPage extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text('Gross Weight'),
+                                  Obx(() => regularDarkText(
+                                      '${(product.productsize[productDetailsController.selectedProductSize.value].productWeight * productDetailsController.productQuantity.value).toStringAsFixed(2)} grams',
+                                      fontSize: 20,
+                                      lineHeight: 1.25))
                                 ],
                               ),
                               GestureDetector(
-                                onTap: () {
-                                  print('add to cart');
+                                onTap: () async {
+                                  print(
+                                      'selected size: ${productDetailsController.productSize.value}');
+                                  print(
+                                      'selected quantity: ${productDetailsController.productQuantity.value}');
+
+                                  if (sizeOptions.isNotEmpty) {
+                                    if (productDetailsController
+                                            .productQuantity.value >
+                                        0) {
+                                      print('product id : ${product.id}');
+                                      bool isAddedToCart =
+                                          await addToCartController.addToCarts(
+                                              product.id,
+                                              productDetailsController
+                                                  .productQuantity.value,
+                                              productDetailsController
+                                                  .productSize.value,
+                                              product
+                                                      .productsize[
+                                                          productDetailsController
+                                                              .selectedProductSize
+                                                              .value]
+                                                      .productWeight *
+                                                  productDetailsController
+                                                      .productQuantity.value);
+                                      if (isAddedToCart) {
+                                        Toast.success('Product added to cart successfully.');
+                                        Get.find<CartController>()
+                                            .getCartItems();
+                                      }
+                                    } else {
+                                      Toast.error('Product size is out of stock.');
+                                    }
+                                  }
                                 },
                                 child: Card(
                                   color: sizeOptions.isEmpty
@@ -213,7 +254,7 @@ class ProductDetailsPage extends StatelessWidget {
       subCatagoryId: searchItem.subCatagoryId,
       image: List<String>.from(searchItem.image),
       cname: searchItem.cname,
-      subName: "", // Provide a default value or use logic to determine subName
+      subName: "",  // Provide a default value or use logic to determine subName
       productsize: List<Productsize>.from(searchItem.productsize),
     );
   }

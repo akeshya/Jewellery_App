@@ -89,6 +89,51 @@ class HomePage extends StatelessWidget {
                     )
                   ],
                 ),
+                SizedBox(height: 5),
+                // /*Slider Section*/
+                // Obx(() =>
+                //   Container(
+                //       height: height * 0.25,
+                //       child: (categoryListController.isLoadingCategories.isTrue || bannersController.loadingBanners.isTrue) ? FlickeringLoadingWidget(Colors.grey) : ListView.builder(
+                //             scrollDirection: Axis.horizontal,
+                //             itemCount: bannersController.bannersList.length,
+                //             itemBuilder: (context, position) {
+                //               return createBanners(
+                //                   context,
+                //                   bannersController.bannersList[position]);
+                //             },
+                //       )),
+                // ),
+                // SizedBox(height: 10),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   children: <Widget>[
+                //     Padding(
+                //       padding: const EdgeInsets.only(top: 0, left: 16),
+                //       child: Text("New Arrivals",
+                //           textAlign: TextAlign.right,
+                //           style: CustomTextStyle.textFormFieldRegular.copyWith(
+                //               color: CustomColors.COLOR_PRIMARY_500,
+                //               fontSize: 16,
+                //               fontFamily: 'LatoBold')),
+                //     ),
+                //     GestureDetector(
+                //       onTap: () {
+                //         for (var category
+                //             in categoryListController.categoriesList) {
+                //           if (category.cname == 'New Arrivals') {
+                //             Navigator.of(context)
+                //                 .pushNamed('/product_listing', arguments: category);
+                //           }
+                //         }
+                //       },
+                //       child: Padding(
+                //         padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                //         child: regularLightText('View All', fontSize: 14),
+                //       ),
+                //     ),
+                //   ],
+                // ),
                 SizedBox(height: 10),
                 Expanded(child: newArrivals(context)),
               ],

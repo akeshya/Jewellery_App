@@ -5,16 +5,24 @@ import 'package:shopping_cart/controllers/PostControllers/add_delete_favorite_co
 import 'package:shopping_cart/controllers/PostControllers/favorites_controller.dart';
 import 'package:shopping_cart/controllers/PostControllers/search_product_controller.dart';
 import 'package:shopping_cart/model/product_list_modal.dart';
+import 'package:shopping_cart/pages/AccountPages/NotificationPage.dart';
+import 'package:shopping_cart/pages/AccountPages/custom_orders_page.dart';
+import 'package:shopping_cart/pages/AccountPages/profile_page.dart';
 import 'package:shopping_cart/pages/CartPages/cart_page.dart';
 import 'package:shopping_cart/pages/CategoryPages/category_page.dart';
 import 'package:shopping_cart/pages/HomePages/home_page.dart';
+import 'package:shopping_cart/pages/AccountPages/help_support_page.dart';
 import 'package:shopping_cart/pages/OrderPages/my_orders_page.dart';
 import 'package:shopping_cart/pages/AccountPages/privacy_page.dart';
 import 'package:shopping_cart/pages/product_details_page.dart';
 import 'package:shopping_cart/pages/AccountPages/settings_page.dart';
 import 'package:shopping_cart/pages/AccountPages/terms_conditions_page.dart';
+import 'package:shopping_cart/pages/AccountPages/wishlist_favorites_page.dart';
 import 'components/exit_material_app.dart';
 import 'controllers/GetControllers/category_list_controller.dart';
+import 'controllers/PostControllers/add_to_cart_controller.dart';
+import 'controllers/PostControllers/fcm_token_controller.dart';
+import 'controllers/PostControllers/get_cart_item_controller.dart';
 import 'controllers/PostControllers/get_sub_category_list_controller.dart';
 import 'controllers/all_products_controller.dart';
 import 'controllers/GetControllers/product_list_controller.dart';
@@ -29,20 +37,21 @@ class MyBottomNavigationPage extends StatelessWidget {
 
   final productListController = Get.put(ProductsListController());
 
-
   final subCategoryController = Get.put(SubCategoryListController());
   final getCategoryController = Get.put(GetSubCategoryListController());
 
   final searchProductsController = Get.put(SearchProductsController());
 
+  final cartController = Get.put(CartController());
   final favoritesController = Get.put(FavoritesController());
+  final fcmTokenController = Get.put(FcmTokenController());
 
   final addFavoriteController = Get.lazyPut(() => AddFavoriteController());
   final getSubCategoriesListController =
       Get.lazyPut(() => GetSubCategoryListController());
+  final addToCartController = Get.lazyPut(() => AddToCartController());
 
   final allProductsController = Get.lazyPut(() => AllProductsController());
-
 
   @override
   Widget build(BuildContext context) {
@@ -154,18 +163,6 @@ class HomeTabNavigator extends StatelessWidget {
               // Check if the route has arguments
               return MaterialPageRoute(
                   builder: (context) => ProductDetailsPage(product: arguments));
-            // case '/product_listing':
-            //   // Check if the route has arguments
-            //   if (arguments is Category) {
-            //     return MaterialPageRoute(
-            //         builder: (context) =>
-            //             ProductListingPage(selectedCategory: arguments));
-            //   } else {
-            //     // Handle an error or default behavior when arguments are missing
-            //     return MaterialPageRoute(
-            //         builder: (context) =>
-            //             ProductListingPage(selectedCategory: arguments));
-            //   }
             default:
               return null;
           }
@@ -261,6 +258,17 @@ class OrdersTabNavigator extends StatelessWidget {
             switch (settings.name) {
               case '/':
                 return MaterialPageRoute(builder: (context) => MyOrdersPage());
+              case '/product_details':
+                // Check if the route has arguments
+                if (arguments is Product) {
+                  return MaterialPageRoute(
+                      builder: (context) =>
+                          ProductDetailsPage(product: arguments));
+                } else {
+                  // Handle an error or default behavior when arguments are missing
+                  return MaterialPageRoute(
+                      builder: (context) => ProductDetailsPage(product: null));
+                }
               default:
                 return null;
             }
@@ -329,12 +337,23 @@ class AccountTabNavigator extends StatelessWidget {
             switch (settings.name) {
               case '/':
                 return MaterialPageRoute(builder: (context) => SettingsPage());
+              case '/profile':
+                return MaterialPageRoute(builder: (context) => ProfilePage());
+              case '/support':
+                return MaterialPageRoute(
+                    builder: (context) => HelpSupportPage());
               case '/privacy':
                 return MaterialPageRoute(
                     builder: (context) => PrivacyPolicyPage());
+              case '/notifications':
+                return MaterialPageRoute(
+                    builder: (context) => NotificationPage());
               case '/tnc':
                 return MaterialPageRoute(
                     builder: (context) => TermsConditionsPage());
+              case '/wishlist':
+                return MaterialPageRoute(
+                    builder: (context) => WishlistFavoritesPage());
               case '/product_details':
                 // Check if the route has arguments
                 if (arguments is Product) {
@@ -348,6 +367,9 @@ class AccountTabNavigator extends StatelessWidget {
                 }
               case '/orders':
                 return MaterialPageRoute(builder: (context) => MyOrdersPage());
+              case '/custom_order':
+                return MaterialPageRoute(
+                    builder: (context) => CustomOrdersPage());
               default:
                 return null;
             }

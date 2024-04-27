@@ -26,17 +26,30 @@ dependencies:
   flutter_rating_bar:
   firebase_core:
   firebase_auth:
+  firebase_messaging:
+  sms_autofill:
   flutter_typeahead:
   dio:
   get:
   get_storage:
+  money_formatter:
   provider:
+  flutter_otp_text_field:
+  dotted_border:
+  badges:
+  sqflite:
   path_provider:
+  flutter_application_1:
   email_validator:
   bottom_navy_bar:
   fluttertoast:
   pin_code_text_field:
   cached_network_image:
+  collection:
+  mime:
+  image_cropper:
+  image_picker:
+  photo_view:
   url_launcher:
   intl:
   carousel_slider:
@@ -61,10 +74,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - images/
-    - images/products/
     - images/settings/
     - images/support/
-    - images/wishlist/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

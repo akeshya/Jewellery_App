@@ -61,7 +61,8 @@ class TermsConditionsPage extends StatelessWidget {
                           child: ElevatedButton(
                             onPressed: () => tncController.selectButton(0),
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: tncController.selectedButton.value == 0 ? AppColors.primaryColor500 : Colors.white,
+                              backgroundColor:
+                              tncController.selectedButton.value == 0 ? AppColors.primaryColor500 : Colors.white,
                             ),
                             child: Text(
                               "Decline",

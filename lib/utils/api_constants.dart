@@ -8,11 +8,15 @@ class ApiConstants {
 
   static var registerEndPoint = '/register';
 
+  static var updateProfileEndPoint = '/update';
+
   static var newArrivalsEndPoint = '/new-arrivals';
 
   static const productsEndpoint = '/product';
 
   static const searchProductsEndPoint = '/search';
+
+  static const bannersEndPoint = '/banner-data';
 
   static var categoriesEndpoint = '/product-category';
 
@@ -23,6 +27,12 @@ class ApiConstants {
   static var addFavoriteEndPoint = '/favorites';
 
   static var favoritesEndPoint = '/get-favorites';
+
+  static var addCartEndPoint = '/add-cart';
+
+  static var getCartEndPoint = '/cart-item';
+
+  static var placeOrderEndPoint = '/add-order';
 
   static var pvcEndPoint = '/privacy-policy';
 

@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:image_cropper/image_cropper.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:shopping_cart/components/custom_toast.dart';
 import 'package:shopping_cart/utils/app_constants.dart';
 import 'package:shopping_cart/utils/get_storage.dart';
@@ -75,6 +77,7 @@ class UserStatusController extends GetxController {
         additionalPhoneController.value.text = additionalPhoneNumber.value;
       }
       userImage.value = (getString(Constants.USER_IMAGE))!;
+      profileImage.value = null;
       isUserLoggedIn.value = true;
     }
     isLoadingStatus.value = false;
@@ -87,5 +90,16 @@ class UserStatusController extends GetxController {
     clearData();
     Get.offAllNamed('/');
     Toast.error('Your account logged out.');
+  }
+
+  Rx<XFile?> pickedFile = Rx<XFile?>(null);
+  updatePickedFile(XFile? file) {
+    pickedFile.value = file;
+  }
+
+  Rx<CroppedFile?> profileImage = Rx<CroppedFile?>(null);
+  void updateProfileImage(CroppedFile file) {
+      profileImage.value = file;
+      pickedFile.value = null;
   }
 }

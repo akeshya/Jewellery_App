@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:shopping_cart/controllers/PostControllers/get_cart_item_controller.dart';
 import 'package:shopping_cart/utils/app_colors.dart';
 import '../utils/CustomColors.dart';
 
 Widget commonBottomTab(int selectedPosition, int tabPosition) {
   bool isCartTab = tabPosition == 3;
+
+  final cartController = Get.find<CartController>();
 
   return Card(
     elevation: 0,
@@ -53,6 +57,26 @@ Widget commonBottomTab(int selectedPosition, int tabPosition) {
             ),
           ],
         ),
+        if (isCartTab && cartController.cartItems.length > 0)
+          Positioned(
+            top: 5,
+            right: 5,
+            child: Container(
+              padding: EdgeInsets.all(4),
+              decoration: BoxDecoration(
+                color: AppColors.primaryColor500,
+                shape: BoxShape.circle,
+              ),
+              child: Text(
+                cartController.cartItems.length.toString(),
+                style: TextStyle(
+                  fontSize: 8,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
       ],
     ),
   );
