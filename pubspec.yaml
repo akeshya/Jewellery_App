@@ -11,8 +11,8 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.6
   flutter_rating_bar: ^4.0.1
-  firebase_core: ^2.24.2
-  firebase_auth: ^4.15.1
+  firebase_core: ^3.12.1
+  firebase_auth: ^5.5.1
   flutter_typeahead: ^5.2.0
   dio: ^5.4.0
   get: ^4.6.6
@@ -26,9 +26,11 @@ dependencies:
   cached_network_image: ^3.3.1
   url_launcher: ^6.2.4
   intl: ^0.19.0
-  carousel_slider: ^4.2.1
+  carousel_slider: ^5.0.0
   carousel_indicator: ^1.0.6
   flutter_windowmanager: ^0.2.0
+  typed_data: ^1.4.0
+  win32: ^5.12.0
  
 
 dev_dependencies:
@@ -39,11 +41,11 @@ flutter:
   uses-material-design: true
 
   assets:
-    - images/
-    - images/products/
-    - images/settings/
-    - images/support/
-    - images/wishlist/
+    # - images/
+    # - images/products/
+    # - images/settings/
+    # - images/support/
+    # - images/wishlist/
 
   fonts:
     - family: Helvetica

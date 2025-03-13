@@ -1,0 +1,1 @@
+ D:\\Jewellery_App\\.dart_tool\\flutter_build\\e3b457bb962d34132f18b777a9d9586e\\native_assets.json: 

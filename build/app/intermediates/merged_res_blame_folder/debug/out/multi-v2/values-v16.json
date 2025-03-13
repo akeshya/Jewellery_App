@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.shopping_cart.app-mergeDebugResources-43:/values-v16/values-v16.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\saisi\\.gradle\\caches\\transforms-3\\822b3308bc97e5959ebd7544a4252fab\\transformed\\appcompat-1.1.0\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "223"
+                    }
+                }
+            ]
+        }
+    ]
+}
