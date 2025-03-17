@@ -64,15 +64,15 @@ class _LoginPageState extends State<LoginPage> {
                         controller: phoneController,
                         prefixIcon: Icon(Icons.phone, color: Color(0xFFCC7B25)),
                         validator: (value) {
-                          if (value == null ||
-                              value.isEmpty ||
-                              value.length < 10) {
-                            return Toast.error('Please enter 10 digits phone number');
-                          } else if (!Utils.isNumeric(value))
-                            return Toast.error('Phone number should be only digits');
-                          else
-                            return null;
-                        },
+  if (value == null || value.isEmpty || value.length < 10) {
+    Toast.error('Please enter a 10-digit phone number');
+    return 'Please enter a 10-digit phone number';
+  } else if (!Utils.isNumeric(value)) {
+    Toast.error('Phone number should be only digits');
+    return 'Phone number should be only digits';
+  }
+  return null;
+}
                       ),
                     ],
                   ),
@@ -122,41 +122,26 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  checkUserStatus(context) async {
-    try {
-      setState(() {
-        _isLoading = true;
-      });
-      await controller.loginController();
+checkUserStatus(context) async {
+  try {
+    setState(() {
+      _isLoading = true;
+    });
+    await controller.loginController();
 
-      if (controller.loginData.value.data != {}) {
-        if (controller.loginData.value.status == true) {
-          controller.verifyPhoneNumber().then((value) {
-            Get.toNamed('/otp')?.then((value) => setState(() => _isLoading = false));
-          });
-        }
-        if (controller.loginData.value.status == false) {
-          if (controller.loginData.value.message == 'User Account Deleted') {
-            customAlertDialog(
-                context,
-                'Alert!',
-                'Dear user, your account with ${phoneController.text} is deactivated so please try with another number or contact to help & support team.',
-                () {},
-                () {});
-          }
-          if (controller.loginData.value.message == 'User does not exist') {
-            Toast.error('User does not exist');
-          }
-          setState(() {
-            _isLoading = true;
-          });
-        }
-      }
-    } catch (e) {
-      Toast.error('Something went wrong, try again later');
-      setState(() {
-        _isLoading = false;
+    if (controller.loginData.value.status == true) {
+      controller.verifyPhoneNumber().then((value) {
+        Get.toNamed('/otp');
       });
+    } else {
+      Toast.error(controller.loginData.value.message ?? "Login failed.");
     }
+  } catch (e) {
+    Toast.error("Something went wrong. Try again later.");
+  } finally {
+    setState(() {
+      _isLoading = false;
+    });
   }
+}
 }

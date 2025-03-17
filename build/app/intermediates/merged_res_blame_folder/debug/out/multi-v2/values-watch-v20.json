@@ -4,7 +4,7 @@
             "outputFile": "com.shopping_cart.app-mergeDebugResources-43:/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\saisi\\.gradle\\caches\\transforms-3\\34bb55599e42f06b78048a00b81d8786\\transformed\\jetified-play-services-auth-20.7.0\\res\\values-watch-v20\\values.xml",
+                    "source": "C:\\Users\\saisi\\.gradle\\caches\\8.9\\transforms\\6aa37e5b6db9c0959ec9657d6189c30f\\transformed\\jetified-play-services-auth-20.7.0\\res\\values-watch-v20\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11",
                         "startColumns": "0,0,0,0,0,0,0,0",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\saisi\\.gradle\\caches\\transforms-3\\822b3308bc97e5959ebd7544a4252fab\\transformed\\appcompat-1.1.0\\res\\values-watch-v20\\values-watch-v20.xml",
+                    "source": "C:\\Users\\saisi\\.gradle\\caches\\8.9\\transforms\\8d9fcdc5a7896817cb827652932f7039\\transformed\\appcompat-1.1.0\\res\\values-watch-v20\\values-watch-v20.xml",
                     "from": {
                         "startLines": "2,5,8",
                         "startColumns": "4,4,4",

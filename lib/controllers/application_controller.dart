@@ -1,4 +1,4 @@
-import 'package:flutter_windowmanager/flutter_windowmanager.dart';
+import 'package:screen_protector/screen_protector.dart';
 import 'package:get/get.dart';
 import 'package:shopping_cart/utils/get_storage.dart';
 
@@ -10,12 +10,11 @@ class ApplicationController extends GetxController {
   RxBool notificationEnabled = false.obs;
 
   secureScreen() async {
-    await FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
+    await ScreenProtector.preventScreenshotOn();
   }
 
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     secureScreen();
     checkNotificationStatus();
@@ -29,13 +28,10 @@ class ApplicationController extends GetxController {
 
   Future<void> checkNotificationStatus() async {
     bool? notificationStatus = getBool('notificationsEnabled');
-    if (notificationStatus == null || notificationStatus == true) {
-      notificationEnabled.value = true;
-    } else
-      notificationEnabled.value = false;
+    notificationEnabled.value = notificationStatus ?? true;
   }
 
-// Function to enable notifications
+  // Function to enable notifications
   Future<void> enableNotifications(bool status) async {
     setData('notificationsEnabled', status);
     checkNotificationStatus();

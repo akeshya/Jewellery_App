@@ -7,10 +7,11 @@ class PostApiController extends GetxController {
 
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     dio.options.followRedirects = true;
-    dio.options.maxRedirects = 3;
+    dio.options.validateStatus = (status) {
+      return status != null && status < 500; // Accept status codes < 500
+    };
     dio.options.connectTimeout = const Duration(seconds: 900);
     dio.options.receiveTimeout = const Duration(seconds: 900);
   }
@@ -27,7 +28,6 @@ class PostApiController extends GetxController {
       }
     } catch (e) {
       print(e);
-      // Handle Dio errors, network issues, or other exceptions here.
       throw ApiException('An error occurred: $e', 0);
     }
   }

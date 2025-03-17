@@ -18,17 +18,19 @@ dependencies:
   get: ^4.6.6
   get_storage: ^2.1.1
   provider: ^6.1.2
-  path_provider: ^2.1.2
+  path_provider: ^2.1.5
   email_validator: ^2.1.17
   bottom_navy_bar: ^6.0.0
-  fluttertoast: ^8.2.4
+  fluttertoast: ^8.2.12
   pin_code_text_field: ^1.8.0
   cached_network_image: ^3.3.1
   url_launcher: ^6.2.4
   intl: ^0.19.0
   carousel_slider: ^5.0.0
   carousel_indicator: ^1.0.6
-  flutter_windowmanager: ^0.2.0
+  # flutter_windowmanager: ^0.1.0
+  window_manager: ^0.4.3
+  screen_protector: ^1.4.2+1
   typed_data: ^1.4.0
   win32: ^5.12.0
  

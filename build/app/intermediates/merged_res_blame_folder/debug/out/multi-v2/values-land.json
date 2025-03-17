@@ -4,7 +4,17 @@
             "outputFile": "com.shopping_cart.app-mergeDebugResources-43:/values-land/values-land.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\saisi\\.gradle\\caches\\transforms-3\\372235f824fd2e82d8fcfb94ad6a3e41\\transformed\\material-1.2.1\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\saisi\\.gradle\\caches\\8.9\\transforms\\8d9fcdc5a7896817cb827652932f7039\\transformed\\appcompat-1.1.0\\res\\values-land\\values-land.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,125,196",
+                        "endColumns": "69,70,67",
+                        "endOffsets": "120,191,259"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\saisi\\.gradle\\caches\\8.9\\transforms\\ac2fc4f2a7f5c389330a0c4ce5bd56f0\\transformed\\material-1.2.1\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,24,30",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -20,16 +30,6 @@
                         "endLines": "5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,26,32,37",
                         "endColumns": "72,69,71,69,64,66,69,71,68,68,81,89,75,67,66,77,64,66,10,10,10",
                         "endOffsets": "332,402,474,544,609,676,746,818,887,956,1038,1128,1204,1272,1339,1417,1482,1549,1721,2116,2385"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\saisi\\.gradle\\caches\\transforms-3\\822b3308bc97e5959ebd7544a4252fab\\transformed\\appcompat-1.1.0\\res\\values-land\\values-land.xml",
-                    "from": {
-                        "startLines": "2,3,4",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "55,125,196",
-                        "endColumns": "69,70,67",
-                        "endOffsets": "120,191,259"
                     }
                 }
             ]

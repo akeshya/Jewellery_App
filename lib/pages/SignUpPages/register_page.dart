@@ -310,28 +310,29 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  Future<void> validateAndSignUpUser() async {
+ Future<void> validateAndSignUpUser() async {
+  final data = {
+    'primary_phone_number': primaryPhoneController.text.trim(),
+    'company_name': companyNameController.text.trim(),
+    'branch_name': branchNameController.text.trim(),
+    'gst_number': gstNumberController.text.trim(),
+    'shipping_address': shippingAddressController.text.trim(),
+    'contact_person_name': contactPersonController.text.trim(),
+    'email': contactEmailController.text.trim(),
+    'additional_phone_number': additionalPhoneController.text.trim(),
+  };
 
-    final data = {
-      'primary_phone_number': primaryPhoneController.text.toString().trim(),
-      'company_name': companyNameController.text.toString().trim(),
-      'branch_name': branchNameController.text.toString().trim(),
-      'gst_number': gstNumberController.text.toString().trim(),
-      'shipping_address': shippingAddressController.text.toString().trim(),
-      'contact_person_name': contactPersonController.text.toString().trim(),
-      'email': contactEmailController.text.toString().trim(),
-      'additional_phone_number':
-          additionalPhoneController.text.toString().trim()
-    };
-
+  try {
     await registerController.registerUser(data);
 
     if (registerController.registerData.value.status == true) {
-      Toast.success('You have been registered successfully.');
-      setData(Constants.PRIMARY_PHONE_NUMBER, primaryPhoneController.text.toString().trim());
-      Get.toNamed('/register_success');
+      Toast.success("Signup successful.");
+      Get.offAllNamed('/login');
     } else {
-      Toast.error('Account Already Exist');
+      Toast.error("Signup failed. Please try again.");
     }
+  } catch (e) {
+    Toast.error("Something went wrong. Please try again later.");
   }
+}
 }
